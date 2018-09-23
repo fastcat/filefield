@@ -1129,13 +1129,13 @@ function filefield_delete_file_references($file, $field = NULL) {
 
       $node = node_load($nid, $vid);
       foreach ($fields as $field_name => $field) {
-        if (isset($node->$field_name)) {
-          foreach ($node->$field_name as $delta => $item) {
+        if (isset($node->{$field_name})) {
+          foreach ($node->{$field_name} as $delta => $item) {
             if ($item['fid'] == $file->fid) {
               unset($node->{$field_name}[$delta]);
             }
           }
-          $node->$field_name = array_values(array_filter($node->$field_name));
+          $node->{$field_name} = array_values(array_filter($node->{$field_name}));
         }
       }
 

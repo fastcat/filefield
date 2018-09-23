@@ -96,7 +96,7 @@ class FileFieldTestCase extends DrupalWebTestCase {
 
     if (is_numeric($nid_or_type)) {
       $node = node_load($nid_or_type);
-      $delta = isset($node->$field_name) ? count($node->$field_name) : 0;
+      $delta = isset($node->{$field_name}) ? count($node->{$field_name}) : 0;
       $edit['files[' . $field_name . '_' . $delta . ']'] = realpath($file->filepath);
       $this->drupalPost('node/' . $nid_or_type . '/edit', $edit, t('Save'));
     }
